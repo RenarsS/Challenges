@@ -29,37 +29,32 @@ class Result
      
 
     // My solution is based on linear function intersection
-    // Rather than brute force checking
-
     public static string kangaroo(int x1, int v1, int x2, int v2)
     {
     
-        double mDiff = v1 - v2;
-        double bDiff = x2 - x1;
+        float mDiff = v1 - v2;
+        float bDiff = x2 - x1;
         
-        double possibleX = bDiff/mDiff;
+        float possibleX = bDiff/mDiff;
         
-        double fx1 = (v1 * possibleX) + x1;
-        double fx2 = (v2 * possibleX) + x2;
+        float fx1 = (v1 * possibleX) + x1;
+        float fx2 = (v2 * possibleX) + x2;
         
         if (mDiff <= 0)
         {
             return "NO";
-        } 
-        else{
-            if(fx1 == fx2)
-            {
-                double rounded = Math.Round(possibleX);
-                
-                //Checks if they meet when they land or when that are in a jump
-                if(possibleX == rounded)
-                    return "YES";
-                     
-                return "NO";
-            }
-            return "NO";
-            
         }
-        return "YES";
+    
+        if(fx1 == fx2)
+        {
+            double rounded = Math.Round(possibleX);
+
+            //Check if they meet in the air or when they have completed the jump.  
+            if(possibleX == rounded)
+                return "YES";
+                     
+        }
+        
+        return "NO";
     }
 }
